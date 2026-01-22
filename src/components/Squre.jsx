@@ -1,6 +1,7 @@
-export default function Squre({value}) {
+export default function Squre({value, onSqureClick}) {
+
   return (
-    <button className="font-bold text-3xl text-black bg-amber-100 border-2 border-b-black px-6.5 py-5 mx-2.5 my-2">
+    <button onClick={onSqureClick} className="font-bold text-3xl text-black bg-amber-100 border-2 border-b-black h-16 w-17 mx-2 my-2">
       {value}
     </button>
   );

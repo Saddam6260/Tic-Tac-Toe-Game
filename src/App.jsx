@@ -1,22 +1,38 @@
+import { useState } from "react";
 import Squre from "./components/Squre";
 
 export default function Board() {
+  const [squres, setSqures] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
+
+  function handleClick(i) {
+    const nextSqures = squres.slice();
+
+    if (xIsNext) {
+      nextSqures[i] = "X";
+    } else {
+      nextSqures[i] = "O";
+    }
+    setSqures(nextSqures);
+    setXIsNext(!xIsNext);
+  }
+
   return (
     <>
-      <div>
-        <Squre value="1" />;
-        <Squre value="2" />;
-        <Squre value="3" />;
+      <div className="flex">
+        <Squre value={squres[0]} onSqureClick={() => handleClick(0)} />;
+        <Squre value={squres[1]} onSqureClick={() => handleClick(1)} />;
+        <Squre value={squres[2]} onSqureClick={() => handleClick(2)} />;
       </div>
-      <div>
-        <Squre value="4" />;
-        <Squre value="5" />;
-        <Squre value="6" />;
+      <div className="flex">
+        <Squre value={squres[3]} onSqureClick={() => handleClick(3)} />;
+        <Squre value={squres[4]} onSqureClick={() => handleClick(4)} />;
+        <Squre value={squres[5]} onSqureClick={() => handleClick(5)} />;
       </div>
-      <div>
-        <Squre value="7" />;
-        <Squre value="8" />;
-        <Squre value="9" />;
+      <div className="flex">
+        <Squre value={squres[6]} onSqureClick={() => handleClick(6)} />;
+        <Squre value={squres[7]} onSqureClick={() => handleClick(7)} />;
+        <Squre value={squres[8]} onSqureClick={() => handleClick(8)} />;
       </div>
     </>
   );
